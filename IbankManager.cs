@@ -6,54 +6,52 @@ public class IbankManager : bankManager
     {
         Banks = [];
     }
-    // public  void CheckPassword(string EnterText)
-    // {
-    //     try
-    //     {
-    //         Console.Write(EnterText);
-    //         var EnteredVal = " ";
-    //         do
-    //         {
-    //             ConsoleKeyInfo Key = Console.ReadKey(false);
-    //             if(Key.Key != ConsoleKey.Backspace && Key.Key != ConsoleKey.Enter)
-    //             {
-    //                 EnteredVal += Key.KeyChar;
-    //                 Console.Write("*");
-    //             }
-    //             else
-    //             {
-    //                 if(Key.Key == ConsoleKey.Backspace && EnteredVal.Length > 0)
-    //                 {
-    //                     EnteredVal = EnteredVal.Substring(0, EnteredVal.Length - 1);
-    //                     Console.Write("\b \b");
-    //                 }
-    //                 else if(Key.Key == ConsoleKey.Enter)
-    //                 {
-    //                     if(string.IsNullOrWhiteSpace(EnteredVal))
-    //                     {
-    //                       //  Console.WriteLine("");
-    //                        Console.WriteLine("Empty value not allowed ");
-    //                        CheckPassword(EnterText);
-    //                        break;
-    //                     }
-                        
-    //                 }
-                    
-    //                 else
-    //                 {
-    //                     Console.Write(" ");
-    //                     break;
-    //                 }
-    //                 //  CheckPassword(EnterText);
-    //             }
-    //         }while(false);
-    //     }
-          
-    //         catch(Exception ex)
-    //         {
-    //             Console.WriteLine(ex);
-    //         }
-    // }
+    public void CheckPassword(string EnterText)
+{
+    try
+    {
+        Console.Write(EnterText);
+        var EnteredVal = "";
+        ConsoleKeyInfo Key;
+        
+        while (true)
+        {
+            Key = Console.ReadKey(true);
+
+            if (Key.Key != ConsoleKey.Backspace && Key.Key != ConsoleKey.Enter)
+            {
+                EnteredVal += Key.KeyChar;
+                Console.Write("*");
+            }
+            else if (Key.Key == ConsoleKey.Backspace && EnteredVal.Length > 0)
+            {
+                EnteredVal = EnteredVal.Substring(0, EnteredVal.Length - 1);
+                Console.Write("\b \b");
+            }
+            else if (Key.Key == ConsoleKey.Enter)
+            {
+                Console.WriteLine();
+                
+                if (string.IsNullOrWhiteSpace(EnteredVal))
+                {
+                    Console.WriteLine("Empty value not allowed ");
+                }
+                else
+                {
+                    break;
+                }
+
+                EnteredVal = "";
+                Console.Write(EnterText);
+            }
+        }
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine(ex);
+    }
+}
+
     public Bank AddAccountActivities()
     {
       Bank bank = new();
@@ -64,7 +62,7 @@ public class IbankManager : bankManager
       Console.WriteLine("Enter your middle name");
       bank.MiddleName = Console.ReadLine()!;
       Console.WriteLine("Enter your password which should not be less four digit");
-      
+      CheckPassword(bank.Password);
       bank.Password = Console.ReadLine()!;
       
       if(bank.Password.Length != 4)

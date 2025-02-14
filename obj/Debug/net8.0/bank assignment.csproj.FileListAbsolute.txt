@@ -12,3 +12,4 @@ c:\bank assignment\obj\Debug\net8.0\refint\bank assignment.dll
 c:\bank assignment\obj\Debug\net8.0\bank assignment.pdb
 C:\bank assignment\obj\Debug\net8.0\bank assignment.genruntimeconfig.cache
 C:\bank assignment\obj\Debug\net8.0\ref\bank assignment.dll
+C:\bank assignment\obj\Debug\net8.0\bank assignment.sourcelink.json
